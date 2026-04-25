@@ -498,6 +498,11 @@ body {
 .gh-status { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); }
 .gh-status.ok { background: var(--green); }
 .gh-status.err { background: #c87e7e; }
+
+.field-input.valid { border-color: #4ade80; background: #22c55e11; }
+.field-input.valid::after { content: "✓"; color: #4ade80; }
+.spotify-status { display: inline-block; margin-left: 8px; font-size: 18px; min-width: 24px; }
+.spotify-status.saved { color: #4ade80; }
 </style>
 </head>
 <body>
@@ -560,6 +565,7 @@ body {
           <div class="album-actions">
             <button class="btn btn-ghost" onclick="openSpotifyAlbum()">🎧 Spotify</button>
             <input id="album-spotify-input" class="field-input" style="width:260px" placeholder="Ссылка на альбом в Spotify..." oninput="updateAlbumSpotify(this.value)" />
+            <span id="spotify-status" class="spotify-status"></span>
           </div>
         </div>
       </div>
@@ -1372,7 +1378,16 @@ async function saveData(commitMessage = null) {
   const statusEl = document.getElementById('gh-status-dot');
   statusEl.style.background = '#ffa500'; // orange - saving
   
-  localStorage.setItem('music_catalog', JSON.stringify(catalog));
+  // Try to save to localStorage, but skip if too large (>1MB)
+  try {
+    const jsonStr = JSON.stringify(catalog);
+    if (jsonStr.length < 1000000) { // ~1MB
+      localStorage.setItem('music_catalog', jsonStr);
+    }
+  } catch(e) {
+    console.log('localStorage full, skipping local save:', e.message);
+  }
+  
   if (ghSettings.token && ghSettings.repo) {
     try { 
       await saveToGithub(commitMessage);
