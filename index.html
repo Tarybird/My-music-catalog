@@ -679,7 +679,7 @@ async function init() {
   }
   if (!loaded) {
     try {
-      const r = await fetch('catalog.json');
+      const r = await fetch('./catalog.json');
       if (r.ok) { catalog = await r.json(); loaded = true; }
     } catch(e) {}
   }
