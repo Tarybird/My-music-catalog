@@ -549,6 +549,9 @@ body {
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
+    <div class="search-wrap">
+      <input class="search-input" type="search" placeholder="Поиск треков..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" oninput="searchTracks(this.value)" value="" />
+    </div>
     <div id="sidebar-content"></div>
   </aside>
 
@@ -1100,8 +1103,20 @@ function checkDuplicates(title) {
 // ========== ALBUM ACTIONS ==========
 function updateAlbumSpotify(val) {
   const artist = catalog.artists.find(a => a.id === currentArtistId);
+  if (!artist) return;
   const album = artist.albums.find(al => al.id === currentAlbumId);
+  if (!album) return;
   album.spotify_url = val;
+  const statusEl = document.getElementById('spotify-status');
+  const inputEl = document.getElementById('album-spotify-input');
+  if (val.includes('spotify.com')) {
+    if (inputEl) inputEl.classList.add('valid');
+    if (statusEl) { statusEl.textContent = '✓'; statusEl.classList.add('saved'); }
+    saveData(`Update album spotify: "${album.title}"`);
+  } else {
+    if (inputEl) inputEl.classList.remove('valid');
+    if (statusEl) { statusEl.textContent = ''; statusEl.classList.remove('saved'); }
+  }
 }
 
 function openSpotifyAlbum() {
