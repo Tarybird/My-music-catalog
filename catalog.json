@@ -1,73 +1,423 @@
 {
-  "artists": [],
+  "artists": [
+    {
+      "id": "folk-mosaic-fusion",
+      "name": "Folk Mosaic Fusion",
+      "albums": [
+        {
+          "id": "fmf-slow-down-soundscapes",
+          "title": "Slow Down Soundscapes",
+          "release_date": null,
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Theta Rain Cocoon", "duration": "3:14", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Piano & Cello Lullaby", "duration": "3:12", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Duet for Sleep", "duration": "2:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Ambient Cello & Piano", "duration": "2:44", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Quiet Pages", "duration": "1:29", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Strings & Keys Ambience", "duration": "2:59", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Ambient for Sleeping", "duration": "2:18", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Calm Drift", "duration": "3:13", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Sleep Soundscape", "duration": "3:26", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Peaceful Soundscape", "duration": "3:10", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fmf-relaxing-chinese-ambient",
+          "title": "Relaxing Chinese Ambient: Floating Tapestry",
+          "release_date": "2026-03-30",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Along the Canal at Golden Hour", "duration": "3:52", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Gazing After the Cranes", "duration": "4:06", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "A Walk Through the Willow Grove", "duration": "3:26", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Soft Bamboo Loop In Mist", "duration": "4:43", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Sound of Guqin", "duration": "5:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "The Same Task", "duration": "4:40", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Sky Above Where the Sky Is Seen", "duration": "3:44", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "View of Jiuzhaigou Valley", "duration": "3:19", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Fading Light on a Bamboo Path", "duration": "3:04", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "A Boat Gliding on the Misty Lake", "duration": "2:51", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fmf-ambient-concentration-argentina",
+          "title": "Ambient for Concentration: Argentina (Ambiente Argentino)",
+          "release_date": "2026-03-05",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Síncopa de la Noche", "duration": "4:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Giro Lento", "duration": "6:31", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Suspiro del Bandoneón", "duration": "4:18", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Lejos en la Pampa", "duration": "3:07", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Río Profundo", "duration": "3:52", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Desde la Distancia", "duration": "3:02", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Calles Vacías de Buenos Aires", "duration": "2:48", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Meditative Bandoneon", "duration": "4:42", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Milonga Memory Drone", "duration": "4:12", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Aliento de Tango", "duration": "3:21", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fmf-dark-ambient-abandoned-manor",
+          "title": "Dark Ambient: The Abandoned Manor",
+          "release_date": "2026-03-26",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "What Lies Beyond The Gates", "duration": "3:19", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "The Door Is Open", "duration": "3:44", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "The Endless Enfilade", "duration": "3:46", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Wondering Who Is Home", "duration": "3:48", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Whose Footsteps Are Those", "duration": "4:26", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Following the Faint Melody", "duration": "4:37", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "This Place Feels Wrong", "duration": "5:46", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Tracking the Winding Key", "duration": "3:11", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "The Ballroom Awakens", "duration": "4:59", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "We Are Leaving Now", "duration": "4:20", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fmf-electronica-argentina",
+          "title": "Electrónica Argentina (Argentine Electronic)",
+          "release_date": "2026-03-05",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Buenos Aires Beat", "duration": "4:03", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Trap con Bandoneón", "duration": "5:39", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Noche Electrónica", "duration": "5:58", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Tango Trap", "duration": "4:39", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Acordes en la Niebla", "duration": "3:41", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Tecno Bandoneón", "duration": "4:29", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Trap del Río de la Plata", "duration": "3:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Noche Que Respira", "duration": "5:21", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Ritmo Hipnótico", "duration": "6:51", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Porteño Pulse", "duration": "5:28", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fmf-northern-ambient-landscapes",
+          "title": "Northern Ambient Landscapes",
+          "release_date": "2026-03-08",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Ice Floes Drift", "duration": "4:22", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Out to Open Water", "duration": "3:39", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Land of Ancestors", "duration": "3:44", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Flute Remembers", "duration": "4:56", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Wind and Boats by the Pier", "duration": "4:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "What the Fjord Hears", "duration": "4:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "A Beckoning Call From Afar", "duration": "3:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "The Past Breathes Here", "duration": "3:43", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Stille", "duration": "4:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "The Old Ones Left Marks", "duration": "3:07", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "focus-state-way",
+      "name": "Focus State Way",
+      "albums": [
+        {
+          "id": "fsw-lounge-swing-jazz",
+          "title": "Lounge Swing Jazz",
+          "release_date": "2026-04-05",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Clean Soft Jazz", "duration": "3:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Acoustic Swing Club", "duration": "2:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Clarinet & Candlelight", "duration": "2:47", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Warm Lounge Swing", "duration": "2:59", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Cozy Jazz Lounge", "duration": "2:58", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Quiet Swing Lounge", "duration": "2:14", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Velvet Corner", "duration": "3:01", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Midnight Table for Two", "duration": "2:46", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "The Lamp is Low", "duration": "2:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Warm Jazz After Midnight", "duration": "2:48", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-guitar-violin-romantic",
+          "title": "Guitar and Violin. Romantic Background for a Date",
+          "release_date": "2026-02-20",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "That Feeling of Flight (Guitar & Violin)", "duration": "3:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Quiet Date Night Music", "duration": "3:51", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Thinking of You Whatever I Do", "duration": "2:30", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Silent Confession.гитара", "duration": "3:12", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "A Simple Story", "duration": "3:17", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Talk All Night (Guitar & Violin)", "duration": "3:41", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Tender Thread", "duration": "2:18", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Guitar and Violin Speak of the Sea", "duration": "2:21", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "A Familiar Walk (Guitar & Violin)", "duration": "3:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Between Waking and Dreaming", "duration": "2:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-balkan-melancholy-letting-go",
+          "title": "Balkan Melancholy for Letting Go",
+          "release_date": "2026-02-14",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "The First Sigh", "duration": "3:37", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Touch of Sorrow", "duration": "2:52", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Waltz for a Weary Heart", "duration": "3:10", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Like Leaves in a Gentle Whirl", "duration": "3:16", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Raindrops Racing Down the Glass", "duration": "5:15", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Chasing a Fading Shadow", "duration": "2:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "River of the Sorrow", "duration": "3:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "The Letting Go Waltz", "duration": "2:41", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "The Quiet Liberation", "duration": "3:32", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Light Falling Through Memory", "duration": "4:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-piano-sweet-sad-memories",
+          "title": "Piano Sweet Sad Memories",
+          "release_date": "2026-02-13",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "A Pattern of Memories", "duration": "2:31", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Piano Sketches of the Past", "duration": "3:14", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "When the Rain Remembers Everything", "duration": "3:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Nostalgia Between Raindrops", "duration": "3:04", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Rainy Piano Music for Deep Reflection", "duration": "3:19", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Cold Air, Warm Memories", "duration": "2:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Nostalgic Background Music for Quiet Work", "duration": "2:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Our Meeting", "duration": "1:47", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Quiet Happiness", "duration": "1:38", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Gentle Piano for Warm Memories", "duration": "1:46", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-winter-window-ambience",
+          "title": "Winter Window Ambience",
+          "release_date": "2026-02-12",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "White Infinity", "duration": "3:33", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Frozen Cursor", "duration": "2:47", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Glimmer on Everything", "duration": "4:36", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Snowfall Compile", "duration": "3:01", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Calm Engine", "duration": "3:47", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Window Interface", "duration": "2:36", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Ice Blue Screen", "duration": "4:11", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Endless Winter Scrolling", "duration": "5:46", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Winter is Outside My Window", "duration": "4:36", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Winter Window Ambience", "duration": "5:14", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-piano-music-programming",
+          "title": "Piano Music for Programming",
+          "release_date": "2026-01-27",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Quiet Algorithm", "duration": "2:32", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Fading Light", "duration": "2:57", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Thinking in a Minor Key", "duration": "3:19", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Brief Respite", "duration": "2:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Unlogged Hours", "duration": "2:51", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Blue Light and Shadows", "duration": "3:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "The Night Is Almost Over", "duration": "2:13", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "While Everyone Sleeps (Piano Sketch)", "duration": "3:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Silent Hours with Piano", "duration": "2:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Morning Code (Piano Focus)", "duration": "2:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-balkan-sadness-gentle-grief",
+          "title": "Balkan Sadness. Music for Gentle Grief",
+          "release_date": "2026-01-10",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Before the Tears", "duration": "2:43", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "When Silence Hurts", "duration": "3:17", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Sitting With the Pain", "duration": "3:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Let the Tears Come", "duration": "2:39", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "A Quiet Cry", "duration": "3:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Breath Between Notes", "duration": "2:43", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Holding the Memory", "duration": "2:17", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Where the Pain Softens", "duration": "2:38", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Still Breathing", "duration": "3:42", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "While We Remember", "duration": "2:41", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-country-instrumental-background",
+          "title": "Country Instrumental Background Music",
+          "release_date": "2026-01-07",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Productive Harmony", "duration": "4:23", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Tired Village Evening", "duration": "1:44", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Gentle Background Melodies", "duration": "2:56", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Journey's Soundtrack", "duration": "3:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Strings in Motion", "duration": "2:42", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Sunny Porch Tune", "duration": "4:26", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Village Stove Song", "duration": "2:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Upbeat Country Strum", "duration": "2:44", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Lofi Country Background", "duration": "4:08", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Positive Country Background", "duration": "3:57", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-country-focus-music-instrumental",
+          "title": "Country Focus Music Instrumental",
+          "release_date": "2026-01-03",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Breezy Afternoon", "duration": "4:02", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Slow Country Drift", "duration": "2:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "The Open Road Ahead", "duration": "4:57", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Rhythm of the Road", "duration": "3:37", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "In the Groove", "duration": "2:38", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Purposeful", "duration": "5:04", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Clockwork", "duration": "3:01", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Order of Things", "duration": "3:48", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Next Ridge Over", "duration": "4:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Taking Its Time", "duration": "4:38", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-christian-focus-organ-drone",
+          "title": "Christian Focus Music for Work: Organ Drone",
+          "release_date": "2026-01-03",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Cathedral of the Quiet Mind", "duration": "2:19", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Fundamentum", "duration": "3:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Cathedral Focus Mode", "duration": "5:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Drone for Deep Work", "duration": "2:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Mechanical Breath", "duration": "5:01", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Luminous Space Organ", "duration": "2:26", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Resonantia", "duration": "5:22", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Textural Focus Drone", "duration": "5:37", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "The Pump and Bellows", "duration": "2:11", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Clear Mind Drone", "duration": "3:58", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-lonely-road-music",
+          "title": "Lonely Road Music",
+          "release_date": "2025-12-21",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Driving Away From Home", "duration": "2:21", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Distant City Glow", "duration": "3:14", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Miles to Go", "duration": "2:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "The Lucky Solo Traveler", "duration": "2:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "My Open Road Joy", "duration": "3:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Alone With the White Line", "duration": "4:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Celebrating the Lone Highway", "duration": "2:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "The Only Car Tonight", "duration": "2:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Freedom in Fast Motion", "duration": "2:42", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Pure Driving Happiness", "duration": "3:36", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-indie-electronica-coding-energy",
+          "title": "Indie Electronica Coding Energy",
+          "release_date": "2025-12-27",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Drone-Driven Indie Tech Mood", "duration": "5:43", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Deep Focus Puls", "duration": "3:11", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Abstract Coding Atmosphere", "duration": "3:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Loop State", "duration": "4:33", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Indie Drone", "duration": "4:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Sustained Coding Output", "duration": "2:11", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Repetitive Focus Loop", "duration": "3:31", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Infinite Coding Loop", "duration": "3:23", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Minimal Indie Electronica Drone", "duration": "3:53", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Background Process", "duration": "3:15", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-lofi-focus-music",
+          "title": "Lofi Focus Music",
+          "release_date": "2025-12-21",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "A Barrier to Noise", "duration": "2:05", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Basin of Focus", "duration": "3:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Calming Frequency", "duration": "2:28", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Cocoon of Calm Work", "duration": "2:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Focus Bubble", "duration": "2:07", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Focus Loop_ Ambient Drone", "duration": "4:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Lofi Focus Ritual", "duration": "2:42", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Lucid Drift", "duration": "3:29", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Mental Flow_ Slow Pulse", "duration": "2:31", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Sensory Grounding", "duration": "3:32", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-frontier-rhythm-code",
+          "title": "Frontier Rhythm Code",
+          "release_date": "2025-12-21",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Stable Heartbeat Focus", "duration": "4:23", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Western Workflow Pulse", "duration": "3:49", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Wagon Wheel Flow", "duration": "2:51", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Unhurried Frontier Mind", "duration": "4:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Amber Hayloft Drone", "duration": "4:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Harmonic Country Space", "duration": "2:58", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Canyon Concentration Echo", "duration": "3:47", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Front Porch Resonance", "duration": "2:47", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Deep Forest Study", "duration": "4:34", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Open Highway Focus", "duration": "2:54", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        },
+        {
+          "id": "fsw-western-drone-for-focus",
+          "title": "Western Drone for Focus",
+          "release_date": "2025-12-20",
+          "cover_url": "",
+          "spotify_url": "",
+          "tracks": [
+            { "id": 1, "title": "Backroad Navigation Tones", "duration": "3:14", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 2, "title": "Big Sky Steady State", "duration": "3:17", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 3, "title": "Canyon Echo Focus", "duration": "3:06", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 4, "title": "Desert Sky Drones", "duration": "2:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 5, "title": "Farmhouse Server Hum", "duration": "3:27", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 6, "title": "Flowing Mind", "duration": "4:33", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 7, "title": "Guitar Wood & Steady Pulse", "duration": "3:09", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 8, "title": "Leather, Dust & Focus Tone", "duration": "4:03", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 9, "title": "Open Range Mind", "duration": "3:24", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } },
+            { "id": 10, "title": "Space for Thought", "duration": "3:04", "spotify_url": "", "audio_file": "", "tags": { "mood": [], "national_color": [], "instruments": [], "style": [], "tempo": "", "purpose": [] } }
+          ]
+        }
+      ]
+    }
+  ],
   "tag_options": {
-    "mood": [
-      "спокойное",
-      "грустное",
-      "радостное",
-      "тревожное",
-      "медитативное",
-      "ностальгическое",
-      "тёмное",
-      "романтическое",
-      "торжественное",
-      "загадочное"
-    ],
-    "national_color": [
-      "нейтральный",
-      "китайский",
-      "аргентинский / танго",
-      "балканский",
-      "северный / скандинавский",
-      "американский / кантри",
-      "западный / вестерн",
-      "джазовый / американский"
-    ],
-    "instruments": [
-      "фортепиано",
-      "виолончель",
-      "скрипка",
-      "гитара",
-      "бандонеон",
-      "флейта",
-      "орган",
-      "синтезатор",
-      "кларнет",
-      "контрабас",
-      "струнные",
-      "гуцинь"
-    ],
-    "style": [
-      "ambient",
-      "dark ambient",
-      "lofi",
-      "classical",
-      "folk",
-      "electronic",
-      "jazz",
-      "swing",
-      "cinematic",
-      "drone",
-      "country",
-      "tango",
-      "indie electronica"
-    ],
-    "tempo": [
-      "медленный",
-      "средний",
-      "быстрый"
-    ],
-    "purpose": [
-      "фон для работы",
-      "концентрация",
-      "глубокий фокус",
-      "расслабление",
-      "сон",
-      "медитация",
-      "романтика",
-      "драйвинг",
-      "грусть / отпускание",
-      "фоновый"
-    ]
+    "mood": ["спокойное", "грустное", "радостное", "тревожное", "медитативное", "ностальгическое", "тёмное", "романтическое", "торжественное", "загадочное"],
+    "national_color": ["нейтральный", "китайский", "аргентинский / танго", "балканский", "северный / скандинавский", "американский / кантри", "западный / вестерн", "джазовый / американский"],
+    "instruments": ["фортепиано", "виолончель", "скрипка", "гитара", "бандонеон", "флейта", "орган", "синтезатор", "кларнет", "контрабас", "струнные", "гуцинь"],
+    "style": ["ambient", "dark ambient", "lofi", "classical", "folk", "electronic", "jazz", "swing", "cinematic", "drone", "country", "tango", "indie electronica"],
+    "tempo": ["медленный", "средний", "быстрый"],
+    "purpose": ["фон для работы", "концентрация", "глубокий фокус", "расслабление", "сон", "медитация", "романтика", "драйвинг", "грусть / отпускание", "фоновый"]
   }
 }
