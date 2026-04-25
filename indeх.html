@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0e10;
+  --surface: #16161a;
+  --surface2: #1e1e24;
+  --surface3: #26262e;
+  --border: #2e2e38;
+  --accent: #c8a96e;
+  --accent2: #7eb8c8;
+  --accent3: #c87e9a;
+  --text: #e8e8ec;
+  --text2: #9090a0;
+  --text3: #5a5a6a;
+  --green: #6ec88a;
+  --radius: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.logo span { color: var(--text2); font-size: 13px; font-family: 'DM Mono', monospace; display: block; margin-top: 1px; }
+.header-stats {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text3);
+  text-align: right;
+}
+.header-stats strong { color: var(--accent); }
+
+/* LAYOUT */
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 65px);
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+  overflow-y: auto;
+  position: sticky;
+  top: 65px;
+  height: calc(100vh - 65px);
+}
+.sidebar-section { margin-bottom: 8px; }
+.sidebar-artist {
+  padding: 10px 20px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text3);
+  margin-top: 12px;
+}
+.sidebar-album {
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text2);
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+  line-height: 1.4;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.album-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.album-info { flex: 1; min-width: 0; }
+.album-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-album:hover { color: var(--text); background: var(--surface2); }
+.sidebar-album.active { color: var(--accent); border-left-color: var(--accent); background: var(--surface2); }
+.sidebar-album .album-date { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; margin-top: 2px; }
+
+/* MAIN */
+.main-content { padding: 32px; overflow-y: auto; }
+
+/* FILTER BAR */
+.filter-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 28px;
+}
+.filter-bar h3 {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  margin-bottom: 14px;
+}
+.filter-groups { display: flex; flex-wrap: wrap; gap: 12px; }
+.filter-group { display: flex; flex-direction: column; gap: 6px; }
+.filter-group label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  background: var(--surface2);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #0e0e10; font-weight: 600; }
+.filter-actions { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+.btn-clear { font-size: 12px; color: var(--text3); cursor: pointer; background: none; border: none; text-decoration: underline; }
+.filter-results { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+.filter-results strong { color: var(--accent); }
+
+/* ALBUM VIEW */
+.album-header {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+  align-items: start;
+}
+.album-cover {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.album-cover img { width: 100%; height: 100%; object-fit: cover; }
+.album-cover .cover-placeholder {
+  font-size: 32px;
+  opacity: 0.3;
+}
+.album-cover .cover-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.2s;
+  font-size: 11px; color: white; text-align: center;
+}
+.album-cover:hover .cover-overlay { opacity: 1; }
+
+.album-info h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.album-meta { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; margin-bottom: 12px; }
+.album-meta span { color: var(--text2); }
+.album-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.btn-primary { background: var(--accent); color: #0e0e10; border-color: var(--accent); }
+.btn-primary:hover { opacity: 0.85; }
+.btn-ghost { background: transparent; color: var(--text2); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-danger { background: transparent; color: #c87e7e; border-color: #c87e7e; }
+.btn-danger:hover { background: #c87e7e22; }
+
+/* TRACK TABLE */
+.track-table { width: 100%; border-collapse: collapse; }
+.track-table thead th {
+  text-align: left;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  padding: 0 12px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.track-row {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+  cursor: pointer;
+}
+.track-row:hover { background: var(--surface2); }
+.track-row.expanded { background: var(--surface2); }
+.track-row td { padding: 12px; vertical-align: middle; }
+.track-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); width: 36px; }
+.track-title { font-size: 14px; font-weight: 500; }
+.track-duration { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); text-align: right; }
+.track-tags-preview { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag-mini {
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  background: var(--surface3);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+.tag-mini.mood { border-color: #c8a96e44; color: var(--accent); }
+.tag-mini.purpose { border-color: #7eb8c844; color: var(--accent2); }
+.tag-mini.national { border-color: #c87e9a44; color: var(--accent3); }
+.track-link-indicator { font-size: 16px; opacity: 0.4; }
+.track-link-indicator.has-link { opacity: 1; }
+
+/* TRACK EXPAND */
+.track-expand {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 20px 20px 48px;
+  display: none;
+}
+.track-expand.open { display: block; }
+.expand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.field-group { margin-bottom: 16px; }
+.field-label {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  margin-bottom: 6px;
+}
+.field-input {
+  width: 100%;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field-input:focus { border-color: var(--accent); }
+.field-input::placeholder { color: var(--text3); }
+
+.tag-selector { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag-option {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  color: var(--text3);
+  background: var(--surface3);
+  transition: all 0.12s;
+  user-select: none;
+}
+.tag-option:hover { border-color: var(--text2); color: var(--text2); }
+.tag-option.selected { font-weight: 600; }
+.tag-option.selected.mood { background: #c8a96e22; border-color: var(--accent); color: var(--accent); }
+.tag-option.selected.purpose { background: #7eb8c822; border-color: var(--accent2); color: var(--accent2); }
+.tag-option.selected.national { background: #c87e9a22; border-color: var(--accent3); color: var(--accent3); }
+.tag-option.selected.style { background: #6ec88a22; border-color: var(--green); color: var(--green); }
+.tag-option.selected.tempo { background: #9a7ec822; border-color: #9a7ec8; color: #9a7ec8; }
+.tag-option.selected.instruments { background: #c8a96e22; border-color: var(--accent); color: var(--accent); }
+
+.expand-actions { display: flex; gap: 8px; margin-top: 16px; align-items: center; }
+.copy-link-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface3);
+  color: var(--text2);
+  transition: all 0.15s;
+}
+.copy-link-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+.copy-toast {
+  font-size: 11px;
+  color: var(--green);
+  font-family: 'DM Mono', monospace;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.copy-toast.show { opacity: 1; }
+
+/* ADD CUSTOM TAG */
+.add-tag-input {
+  display: flex; gap: 6px; margin-top: 8px;
+}
+.add-tag-input input {
+  flex: 1;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  color: var(--text);
+  font-size: 11px;
+  outline: none;
+}
+.add-tag-input input:focus { border-color: var(--accent); }
+.add-tag-input button {
+  padding: 5px 12px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text2);
+  font-size: 11px;
+  cursor: pointer;
+}
+.add-tag-input button:hover { border-color: var(--accent); color: var(--accent); }
+
+/* DUPLICATE WARNING */
+.dup-warning {
+  background: #c8a96e18;
+  border: 1px solid #c8a96e44;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: none;
+}
+.dup-warning.show { display: block; }
+
+/* FILTERED VIEW */
+.filtered-tracks-view { }
+.filtered-album-group { margin-bottom: 28px; }
+.filtered-album-label {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: var(--text3);
+  padding: 6px 12px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filtered-album-label strong { color: var(--text2); }
+
+/* ADD TRACK / ADD ALBUM */
+.add-track-row td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.add-track-row input {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 12px;
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  width: 100%;
+}
+.add-track-row input:focus { border-color: var(--accent); }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  width: 480px;
+  max-width: 95vw;
+}
+.modal h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+
+/* EXPORT */
+.export-bar {
+  display: flex; gap: 8px; margin-bottom: 20px;
+}
+
+/* VIEWS */
+.view { display: none; }
+.view.active { display: block; }
+
+/* WELCOME */
+.welcome {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  color: var(--text3);
+}
+.welcome h2 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--text2); margin-bottom: 10px; }
+.welcome p { font-size: 14px; max-width: 400px; line-height: 1.6; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* SEARCH */
+.search-wrap { padding: 0 16px 16px; }
+.search-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--text3); }
+
+/* TEMPO SELECT */
+.tempo-select { display: flex; gap: 6px; }
+.tempo-btn {
+  flex: 1; padding: 6px; border-radius: 6px; font-size: 11px;
+  cursor: pointer; border: 1px solid var(--border);
+  background: var(--surface3); color: var(--text3);
+  text-align: center; transition: all 0.12s;
+}
+.tempo-btn:hover { border-color: #9a7ec8; color: #9a7ec8; }
+.tempo-btn.selected { background: #9a7ec822; border-color: #9a7ec8; color: #9a7ec8; font-weight: 600; }
+
+/* GITHUB STATUS */
+.github-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text3);
+}
+.gh-status { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); }
+.gh-status.ok { background: var(--green); }
+.gh-status.err { background: #c87e7e; }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div>
+    <div class="logo">Music Catalog <span id="gh-mode-label">· локальный режим</span></div>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <button class="btn btn-ghost" onclick="showFilterView()">🔍 Фильтр по тегам</button>
+    <button class="btn btn-ghost" onclick="showAddAlbumModal()">+ Альбом</button>
+    <button class="btn btn-ghost" onclick="exportCSV()">↓ CSV</button>
+    <button class="btn btn-ghost" onclick="exportJSON()">↓ JSON</button>
+    <button class="btn btn-primary" onclick="showGithubModal()">⚙ GitHub</button>
+  </div>
+</header>
+
+<div class="github-bar">
+  <div class="gh-status" id="gh-status-dot"></div>
+  <span id="gh-status-text">GitHub не подключён — данные хранятся в браузере</span>
+  <span style="margin-left:auto;cursor:pointer;text-decoration:underline;color:var(--text3)" onclick="saveData()">💾 Сохранить</span>
+</div>
+
+<div class="app-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="search-wrap">
+      <input class="search-input" placeholder="Поиск треков..." oninput="searchTracks(this.value)" />
+    </div>
+    <div id="sidebar-content"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <!-- WELCOME -->
+    <div id="view-welcome" class="view active">
+      <div class="welcome">
+        <h2>Выберите альбом</h2>
+        <p>Нажмите на альбом в боковом меню чтобы просмотреть и редактировать треки. Используйте фильтр по тегам для поиска нужной музыки.</p>
+      </div>
+    </div>
+
+    <!-- ALBUM VIEW -->
+    <div id="view-album" class="view">
+      <div class="export-bar">
+        <button class="btn btn-ghost" onclick="goBack()">← Назад</button>
+      </div>
+      <div class="album-header">
+        <div class="album-cover" id="cover-display" onclick="changeCover()">
+          <div class="cover-placeholder">🎵</div>
+          <div class="cover-overlay">Изменить<br>обложку</div>
+        </div>
+        <div class="album-info">
+          <h1 id="album-title-display"></h1>
+          <div class="album-meta">
+            <span id="album-artist-display"></span> &nbsp;·&nbsp;
+            <span id="album-date-display"></span> &nbsp;·&nbsp;
+            <span id="album-tracks-display"></span>
+          </div>
+          <div class="album-actions">
+            <button class="btn btn-ghost" onclick="openSpotifyAlbum()">🎧 Spotify</button>
+            <input id="album-spotify-input" class="field-input" style="width:260px" placeholder="Ссылка на альбом в Spotify..." oninput="updateAlbumSpotify(this.value)" />
+          </div>
+        </div>
+      </div>
+
+      <div id="dup-warning" class="dup-warning"></div>
+
+      <table class="track-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Теги</th>
+            <th style="text-align:right">Время</th>
+            <th style="text-align:center">🔗</th>
+          </tr>
+        </thead>
+        <tbody id="track-list"></tbody>
+      </table>
+
+      <div style="margin-top:16px;">
+        <button class="btn btn-ghost" onclick="showAddTrackRow()">+ Добавить трек</button>
+      </div>
+    </div>
+
+    <!-- FILTER VIEW -->
+    <div id="view-filter" class="view">
+      <div class="export-bar">
+        <button class="btn btn-ghost" onclick="goBack()">← Назад</button>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:22px;margin-left:8px">Фильтр по тегам</h2>
+      </div>
+
+      <div class="filter-bar">
+        <h3>Выберите теги</h3>
+        <div class="filter-groups" id="filter-groups"></div>
+        <div class="filter-actions">
+          <button class="btn-clear" onclick="clearFilters()">Сбросить фильтры</button>
+          <span class="filter-results">Найдено: <strong id="filter-count">0</strong> треков</span>
+        </div>
+      </div>
+
+      <div id="filter-results-list" class="filtered-tracks-view"></div>
+    </div>
+  </main>
+</div>
+
+<!-- GITHUB MODAL -->
+<div class="modal-overlay" id="modal-github">
+  <div class="modal">
+    <h2>⚙ Настройки GitHub</h2>
+    <div class="field-group">
+      <div class="field-label">GitHub Token (Personal Access Token)</div>
+      <input class="field-input" id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxx" />
+    </div>
+    <div class="field-group">
+      <div class="field-label">Репозиторий (username/repo-name)</div>
+      <input class="field-input" id="gh-repo" placeholder="myname/music-catalog" />
+    </div>
+    <div class="field-group">
+      <div class="field-label">Путь к файлу в репо</div>
+      <input class="field-input" id="gh-path" placeholder="catalog.json" value="catalog.json" />
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-top:8px">Токен хранится только в вашем браузере (localStorage). Никуда не отправляется кроме GitHub API.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modal-github')">Отмена</button>
+      <button class="btn btn-ghost" onclick="testGithub()">Проверить соединение</button>
+      <button class="btn btn-primary" onclick="saveGithubSettings()">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD ALBUM MODAL -->
+<div class="modal-overlay" id="modal-add-album">
+  <div class="modal">
+    <h2>+ Новый альбом</h2>
+    <div class="field-group">
+      <div class="field-label">Исполнитель</div>
+      <select class="field-input" id="new-album-artist">
+        <option value="">— выбрать —</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <div class="field-label">Название альбома</div>
+      <input class="field-input" id="new-album-title" placeholder="Название..." />
+    </div>
+    <div class="field-group">
+      <div class="field-label">Дата выпуска</div>
+      <input class="field-input" id="new-album-date" type="date" />
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add-album')">Отмена</button>
+      <button class="btn btn-primary" onclick="addAlbum()">Создать</button>
+    </div>
+  </div>
+</div>
+
+<!-- COVER INPUT (hidden) -->
+<input type="file" id="cover-file-input" accept="image/*" style="display:none" onchange="handleCoverFile(event)" />
+<div class="modal-overlay" id="modal-cover">
+  <div class="modal">
+    <h2>Обложка альбома</h2>
+    <div class="field-group">
+      <div class="field-label">Ссылка на изображение (URL)</div>
+      <input class="field-input" id="cover-url-input" placeholder="https://..." />
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin:10px 0">или</p>
+    <button class="btn btn-ghost" onclick="document.getElementById('cover-file-input').click()">📂 Загрузить файл</button>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modal-cover')">Отмена</button>
+      <button class="btn btn-primary" onclick="applyCoverUrl()">Применить</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== STATE ==========
+let catalog = null;
+let currentArtistId = null;
+let currentAlbumId = null;
+let activeFilters = { mood: [], national_color: [], instruments: [], style: [], tempo: [], purpose: [] };
+let expandedTrackId = null;
+let previousView = 'welcome';
+let ghSettings = { token: '', repo: '', path: 'catalog.json' };
+
+// ========== INIT ==========
+async function init() {
+  // Load GitHub settings
+  const saved = localStorage.getItem('gh_settings');
+  if (saved) { ghSettings = JSON.parse(saved); updateGhStatus(true); }
+
+  // Try to load catalog from GitHub first, then localStorage, then fetch local
+  let loaded = false;
+  if (ghSettings.token && ghSettings.repo) {
+    try { await loadFromGithub(); loaded = true; } catch(e) { console.log('GH load failed', e); }
+  }
+  if (!loaded) {
+    const local = localStorage.getItem('music_catalog');
+    if (local) { catalog = JSON.parse(local); loaded = true; }
+  }
+  if (!loaded) {
+    try {
+      const r = await fetch('./catalog.json');
+      if (r.ok) { catalog = await r.json(); loaded = true; }
+    } catch(e) { console.log('Local fetch failed', e); }
+  }
+  if (!loaded) {
+    try {
+      const r = await fetch('/catalog.json');
+      if (r.ok) { catalog = await r.json(); loaded = true; }
+    } catch(e) { console.log('Root fetch failed', e); }
+  }
+  if (!loaded) {
+    catalog = { artists: [], tag_options: getDefaultTags() };
+  }
+
+  renderSidebar();
+  renderFilterGroups();
+}
+
+function getDefaultTags() {
+  return {
+    mood: ["спокойное","грустное","радостное","тревожное","медитативное","ностальгическое","тёмное","романтическое","торжественное","загадочное"],
+    national_color: ["нейтральный","китайский","аргентинский / танго","балканский","северный / скандинавский","американский / кантри","западный / вестерн","джазовый / американский"],
+    instruments: ["фортепиано","виолончель","скрипка","гитара","бандонеон","флейта","орган","синтезатор","кларнет","контрабас","струнные","гуцинь"],
+    style: ["ambient","dark ambient","lofi","classical","folk","electronic","jazz","swing","cinematic","drone","country","tango","indie electronica"],
+    tempo: ["медленный","средний","быстрый"],
+    purpose: ["фон для работы","концентрация","глубокий фокус","расслабление","сон","медитация","романтика","драйвинг","грусть / отпускание","фоновый"]
+  };
+}
+
+// ========== SIDEBAR ==========
+function handleAlbumClick(el) {
+  const artistId = decodeURIComponent(el.dataset.artist || el.closest('[data-artist]').dataset.artist);
+  const albumId = decodeURIComponent(el.dataset.album || el.closest('[data-album]').dataset.album);
+  const trackId = el.dataset.track ? decodeURIComponent(el.dataset.track) : null;
+  openAlbum(artistId, albumId);
+  if (trackId) setTimeout(() => expandTrack(trackId), 200);
+}
+
+function renderSidebar() {
+  const el = document.getElementById('sidebar-content');
+  let html = '';
+  catalog.artists.forEach(artist => {
+    html += `<div class="sidebar-section">
+      <div class="sidebar-artist">${artist.name}</div>`;
+    artist.albums.forEach(album => {
+      const active = (currentAlbumId === album.id) ? 'active' : '';
+      const date = album.release_date ? album.release_date.slice(0,7) : '—';
+      const coverStyle = album.cover_url ? `background-image: url('${album.cover_url}'); background-size: cover; background-position: center;` : '';
+      html += `<div class="sidebar-album ${active}" data-artist="${encodeURIComponent(artist.id)}" data-album="${encodeURIComponent(album.id)}" onclick="handleAlbumClick(this)">
+        <div class="album-thumb" style="${coverStyle}"></div>
+        <div class="album-info">
+          <div class="album-title">${album.title}</div>
+          <div class="album-date">${date}</div>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  el.innerHTML = html;
+}
+
+// ========== SEARCH ==========
+function searchTracks(q) {
+  if (!q.trim()) { renderSidebar(); return; }
+  q = q.toLowerCase();
+  const el = document.getElementById('sidebar-content');
+  let html = '';
+  let count = 0;
+  catalog.artists.forEach(artist => {
+    artist.albums.forEach(album => {
+      const matches = album.tracks.filter(t => t.title.toLowerCase().includes(q));
+      if (matches.length) {
+        html += `<div class="filtered-album-label"><strong>${album.title}</strong></div>`;
+        matches.forEach(t => {
+          html += `<div class="sidebar-album" data-artist="${encodeURIComponent(artist.id)}" data-album="${encodeURIComponent(album.id)}" data-track="${encodeURIComponent(album.id+'-'+t.id)}" onclick="handleAlbumClick(this)">${t.title}</div>`;
+          count++;
+        });
+      }
+    });
+  });
+  if (!count) html = `<div style="padding:20px;color:var(--text3);font-size:13px">Не найдено</div>`;
+  el.innerHTML = html;
+
+  // DUPLICATE CHECK across all tracks
+  const allTitles = [];
+  catalog.artists.forEach(a => a.albums.forEach(al => al.tracks.forEach(t => allTitles.push(t.title.toLowerCase()))));
+  const dups = allTitles.filter(t => t === q.toLowerCase()).length;
+  const warn = document.getElementById('dup-warning');
+  if (dups > 0 && warn) {
+    warn.textContent = `⚠ Трек с похожим названием уже существует (${dups} совпадение).`;
+    warn.classList.add('show');
+  } else if (warn) { warn.classList.remove('show'); }
+}
+
+// ========== OPEN ALBUM ==========
+function openAlbum(artistId, albumId) {
+  currentArtistId = artistId;
+  currentAlbumId = albumId;
+  const artist = catalog.artists.find(a => a.id === artistId);
+  if (!artist) { console.error('Artist not found:', artistId, 'catalog:', catalog); return; }
+  const album = artist.albums.find(al => al.id === albumId);
+  if (!album) { console.error('Album not found:', albumId); return; }
+  expandedTrackId = null;
+
+  document.getElementById('album-title-display').textContent = album.title;
+  document.getElementById('album-artist-display').textContent = artist.name;
+  document.getElementById('album-date-display').textContent = album.release_date || '—';
+  document.getElementById('album-tracks-display').textContent = album.tracks.length + ' треков';
+  document.getElementById('album-spotify-input').value = album.spotify_url || '';
+
+  // Cover
+  const coverEl = document.getElementById('cover-display');
+  if (album.cover_url) {
+    coverEl.innerHTML = `<img src="${album.cover_url}" alt="cover"><div class="cover-overlay">Изменить<br>обложку</div>`;
+  } else {
+    coverEl.innerHTML = `<div class="cover-placeholder">🎵</div><div class="cover-overlay">Добавить<br>обложку</div>`;
+  }
+
+  renderTrackList(album);
+  showView('album');
+  renderSidebar(); // re-render to highlight active
+}
+
+// ========== TRACK LIST ==========
+function renderTrackList(album) {
+  const tbody = document.getElementById('track-list');
+  let html = '';
+  album.tracks.forEach((track, idx) => {
+    const rowId = `${album.id}-${track.id}`;
+    const tags = track.tags || {};
+    const tagPrev = [
+      ...(tags.mood || []).map(t => `<span class="tag-mini mood">${t}</span>`),
+      ...(tags.purpose || []).map(t => `<span class="tag-mini purpose">${t}</span>`),
+      ...(tags.national_color || []).map(t => `<span class="tag-mini national">${t}</span>`)
+    ].slice(0,4).join('');
+    const hasLink = track.spotify_url ? 'has-link' : '';
+    html += `
+    <tr class="track-row" id="row-${rowId}" onclick="toggleTrack('${rowId}')">
+      <td class="track-num">${idx+1}</td>
+      <td class="track-title">${track.title}</td>
+      <td><div class="track-tags-preview">${tagPrev || '<span style="color:var(--text3);font-size:11px">—</span>'}</div></td>
+      <td class="track-duration">${track.duration || '—'}</td>
+      <td style="text-align:center"><span class="track-link-indicator ${hasLink}" title="${track.spotify_url ? track.spotify_url : 'нет ссылки'}">🔗</span></td>
+    </tr>
+    <tr id="expand-${rowId}">
+      <td colspan="5" style="padding:0">
+        <div class="track-expand" id="expandcontent-${rowId}">
+          ${renderExpandHTML(track, rowId)}
+        </div>
+      </td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+function renderExpandHTML(track, rowId) {
+  const tags = track.tags || {};
+  const opts = catalog.tag_options || getDefaultTags();
+
+  const makeChips = (category, colorClass) => {
+    const selected = tags[category] || [];
+    return (opts[category] || []).map(opt => {
+      const sel = selected.includes(opt) ? 'selected ' + colorClass : '';
+      return `<span class="tag-option ${sel}" data-cat="${category}" data-val="${opt}" onclick="toggleTag('${rowId}','${category}','${opt}',this)">${opt}</span>`;
+    }).join('') + `
+    <div class="add-tag-input">
+      <input placeholder="Свой тег..." id="custom-tag-${category}-${rowId}" />
+      <button onclick="addCustomTag('${rowId}','${category}')">+</button>
+    </div>`;
+  };
+
+  const tempoVal = tags.tempo || '';
+  const tempos = (opts.tempo || ['медленный','средний','быстрый']);
+
+  return `
+  <div class="expand-grid">
+    <div>
+      <div class="field-group">
+        <div class="field-label">Ссылка Spotify</div>
+        <input class="field-input" id="spotify-${rowId}" value="${track.spotify_url || ''}" placeholder="https://open.spotify.com/track/..." />
+      </div>
+      <div class="field-group">
+        <div class="field-label">Аудиофайл (путь или URL)</div>
+        <input class="field-input" id="audio-${rowId}" value="${track.audio_file || ''}" placeholder="music/track.mp3" />
+      </div>
+      <div class="field-group">
+        <div class="field-label">Темп</div>
+        <div class="tempo-select">
+          ${tempos.map(t => `<div class="tempo-btn ${tempoVal===t?'selected':''}" onclick="setTempo('${rowId}','${t}',this)">${t}</div>`).join('')}
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">Настроение</div>
+        <div class="tag-selector">${makeChips('mood','mood')}</div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">Назначение</div>
+        <div class="tag-selector">${makeChips('purpose','purpose')}</div>
+      </div>
+    </div>
+    <div>
+      <div class="field-group">
+        <div class="field-label">Нац. колорит</div>
+        <div class="tag-selector">${makeChips('national_color','national')}</div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">Стиль</div>
+        <div class="tag-selector">${makeChips('style','style')}</div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">Инструменты</div>
+        <div class="tag-selector">${makeChips('instruments','instruments')}</div>
+      </div>
+    </div>
+  </div>
+  <div class="expand-actions">
+    <button class="btn btn-primary" onclick="saveTrack('${rowId}')">💾 Сохранить</button>
+    <button class="copy-link-btn" onclick="copySpotifyLink('${rowId}')">📋 Копировать ссылку</button>
+    <span class="copy-toast" id="toast-${rowId}">Скопировано!</span>
+    ${track.spotify_url ? `<button class="btn btn-ghost" onclick="window.open('${track.spotify_url}','_blank')">▶ Слушать</button>` : ''}
+  </div>`;
+}
+
+function toggleTrack(rowId) {
+  const content = document.getElementById('expandcontent-' + rowId);
+  const row = document.getElementById('row-' + rowId);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.track-expand.open').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.track-row.expanded').forEach(el => el.classList.remove('expanded'));
+  if (!isOpen) {
+    content.classList.add('open');
+    row.classList.add('expanded');
+    expandedTrackId = rowId;
+  } else {
+    expandedTrackId = null;
+  }
+}
+
+function expandTrack(rowId) { toggleTrack(rowId); }
+
+// ========== TRACK EDITING ==========
+function toggleTag(rowId, category, value, el) {
+  const [albumId, trackId] = parseRowId(rowId);
+  const track = getTrack(albumId, trackId);
+  if (!track.tags) track.tags = {};
+  if (!track.tags[category]) track.tags[category] = [];
+  const idx = track.tags[category].indexOf(value);
+  if (idx === -1) {
+    track.tags[category].push(value);
+    el.classList.add('selected', category === 'national_color' ? 'national' : category);
+  } else {
+    track.tags[category].splice(idx, 1);
+    el.classList.remove('selected', category === 'national_color' ? 'national' : category, 'mood','purpose','style','instruments','national');
+  }
+}
+
+function setTempo(rowId, value, el) {
+  const [albumId, trackId] = parseRowId(rowId);
+  const track = getTrack(albumId, trackId);
+  if (!track.tags) track.tags = {};
+  track.tags.tempo = value;
+  el.closest('.tempo-select').querySelectorAll('.tempo-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function addCustomTag(rowId, category) {
+  const input = document.getElementById(`custom-tag-${category}-${rowId}`);
+  const val = input.value.trim();
+  if (!val) return;
+  // Add to tag_options if not there
+  if (!catalog.tag_options[category]) catalog.tag_options[category] = [];
+  if (!catalog.tag_options[category].includes(val)) catalog.tag_options[category].push(val);
+  // Add to track
+  const [albumId, trackId] = parseRowId(rowId);
+  const track = getTrack(albumId, trackId);
+  if (!track.tags[category]) track.tags[category] = [];
+  if (!track.tags[category].includes(val)) track.tags[category].push(val);
+  input.value = '';
+  // Refresh expand
+  const content = document.getElementById('expandcontent-' + rowId);
+  content.innerHTML = renderExpandHTML(track, rowId);
+  content.classList.add('open');
+}
+
+function saveTrack(rowId) {
+  const [albumId, trackId] = parseRowId(rowId);
+  const track = getTrack(albumId, trackId);
+  const spotifyInput = document.getElementById('spotify-' + rowId);
+  const audioInput = document.getElementById('audio-' + rowId);
+  if (spotifyInput) track.spotify_url = spotifyInput.value.trim();
+  if (audioInput) track.audio_file = audioInput.value.trim();
+
+  // Duplicate title check
+  checkDuplicates(track.title);
+
+  // Re-render row
+  const artist = catalog.artists.find(a => a.albums.find(al => al.id === albumId));
+  const album = artist.albums.find(al => al.id === albumId);
+  renderTrackList(album);
+
+  saveData(`Update track: "${track.title}" in "${album.title}"`);
+
+  // Show save status
+  const toast = document.getElementById('toast-' + rowId);
+  if (toast) { 
+    toast.textContent = '✓ Сохранено'; 
+    toast.classList.add('show'); 
+    setTimeout(() => { toast.classList.remove('show'); }, 1500); 
+  }
+
+  // Close expanded track after short delay
+  setTimeout(() => {
+    const content = document.getElementById('expandcontent-' + rowId);
+    const row = document.getElementById('row-' + rowId);
+    if (content) { 
+      content.classList.remove('open'); 
+      row.classList.remove('expanded');
+      expandedTrackId = null;
+    }
+  }, 800);
+}
+
+function copySpotifyLink(rowId) {
+  const [albumId, trackId] = parseRowId(rowId);
+  const track = getTrack(albumId, trackId);
+  const url = (document.getElementById('spotify-' + rowId) || {}).value || track.spotify_url;
+  if (!url) { alert('Ссылка не заполнена'); return; }
+  navigator.clipboard.writeText(url);
+  const toast = document.getElementById('toast-' + rowId);
+  if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1500); }
+}
+
+function checkDuplicates(title) {
+  const q = title.toLowerCase();
+  let count = 0;
+  catalog.artists.forEach(a => a.albums.forEach(al => al.tracks.forEach(t => { if (t.title.toLowerCase() === q) count++; })));
+  const warn = document.getElementById('dup-warning');
+  if (count > 1) {
+    warn.textContent = `⚠ Трек "${title}" встречается ${count} раза в каталоге!`;
+    warn.classList.add('show');
+  } else { warn.classList.remove('show'); }
+}
+
+// ========== ALBUM ACTIONS ==========
+function updateAlbumSpotify(val) {
+  const artist = catalog.artists.find(a => a.id === currentArtistId);
+  const album = artist.albums.find(al => al.id === currentAlbumId);
+  album.spotify_url = val;
+}
+
+function openSpotifyAlbum() {
+  const artist = catalog.artists.find(a => a.id === currentArtistId);
+  const album = artist.albums.find(al => al.id === currentAlbumId);
+  if (album.spotify_url) window.open(album.spotify_url, '_blank');
+  else alert('Ссылка на альбом не заполнена');
+}
+
+function changeCover() { document.getElementById('modal-cover').classList.add('open'); }
+
+function applyCoverUrl() {
+  const url = document.getElementById('cover-url-input').value.trim();
+  if (!url) return;
+  setCoverUrl(url);
+  closeModal('modal-cover');
+}
+
+function handleCoverFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => { setCoverUrl(ev.target.result); closeModal('modal-cover'); };
+  reader.readAsDataURL(file);
+}
+
+function setCoverUrl(url) {
+  const artist = catalog.artists.find(a => a.id === currentArtistId);
+  const album = artist.albums.find(al => al.id === currentAlbumId);
+  album.cover_url = url;
+  const coverEl = document.getElementById('cover-display');
+  coverEl.innerHTML = `<img src="${url}" alt="cover"><div class="cover-overlay">Изменить<br>обложку</div>`;
+  saveData(`Update cover: "${album.title}"`);
+}
+
+// ========== ADD TRACK ==========
+function showAddTrackRow() {
+  const tbody = document.getElementById('track-list');
+  const artist = catalog.artists.find(a => a.id === currentArtistId);
+  const album = artist.albums.find(al => al.id === currentAlbumId);
+  const num = album.tracks.length + 1;
+  const tr = document.createElement('tr');
+  tr.className = 'add-track-row';
+  tr.id = 'add-track-row';
+  tr.innerHTML = `
+    <td class="track-num">${num}</td>
+    <td><input id="new-track-title" placeholder="Название трека..." onkeydown="if(event.key==='Enter')confirmAddTrack()" /></td>
+    <td><input id="new-track-dur" placeholder="3:00" style="width:70px" /></td>
+    <td colspan="2">
+      <button class="btn btn-primary" style="padding:5px 12px;font-size:12px" onclick="confirmAddTrack()">Добавить</button>
+      <button class="btn btn-ghost" style="padding:5px 12px;font-size:12px;margin-left:4px" onclick="document.getElementById('add-track-row').remove()">✕</button>
+    </td>`;
+  tbody.appendChild(tr);
+  document.getElementById('new-track-title').focus();
+}
+
+function confirmAddTrack() {
+  const title = document.getElementById('new-track-title').value.trim();
+  const dur = document.getElementById('new-track-dur').value.trim();
+  if (!title) return;
+
+  checkDuplicates(title);
+
+  const artist = catalog.artists.find(a => a.id === currentArtistId);
+  const album = artist.albums.find(al => al.id === currentAlbumId);
+  const newTrack = {
+    id: album.tracks.length + 1,
+    title,
+    duration: dur || '',
+    spotify_url: '',
+    audio_file: '',
+    tags: { mood: [], national_color: [], instruments: [], style: [], tempo: '', purpose: [] }
+  };
+  album.tracks.push(newTrack);
+  renderTrackList(album);
+  document.getElementById('album-tracks-display').textContent = album.tracks.length + ' треков';
+  saveData(`Add track: "${title}" to "${album.title}"`);
+}
+
+// ========== ADD ALBUM ==========
+function showAddAlbumModal() {
+  const sel = document.getElementById('new-album-artist');
+  sel.innerHTML = '<option value="">— выбрать —</option>';
+  catalog.artists.forEach(a => {
+    sel.innerHTML += `<option value="${a.id}">${a.name}</option>`;
+  });
+  sel.innerHTML += `<option value="__new__">+ Новый исполнитель</option>`;
+  document.getElementById('modal-add-album').classList.add('open');
+}
+
+function addAlbum() {
+  const artistId = document.getElementById('new-album-artist').value;
+  const title = document.getElementById('new-album-title').value.trim();
+  const date = document.getElementById('new-album-date').value;
+  if (!title) return;
+
+  let artist;
+  if (artistId === '__new__') {
+    const name = prompt('Имя нового исполнителя:');
+    if (!name) return;
+    artist = { id: name.toLowerCase().replace(/\s+/g,'-'), name, albums: [] };
+    catalog.artists.push(artist);
+  } else {
+    artist = catalog.artists.find(a => a.id === artistId);
+  }
+
+  const album = {
+    id: artist.id + '-' + title.toLowerCase().replace(/\s+/g,'-').slice(0,30),
+    title,
+    release_date: date || null,
+    cover_url: '',
+    spotify_url: '',
+    tracks: []
+  };
+  artist.albums.push(album);
+  closeModal('modal-add-album');
+  renderSidebar();
+  openAlbum(artist.id, album.id);
+  saveData(`Add album: "${title}" by ${artist.name}`);
+}
+
+// ========== FILTER VIEW ==========
+function showFilterView() {
+  showView('filter');
+  applyFilters();
+}
+
+function renderFilterGroups() {
+  const opts = catalog.tag_options || getDefaultTags();
+  const labels = {
+    mood: 'Настроение', national_color: 'Нац. колорит',
+    instruments: 'Инструменты', style: 'Стиль',
+    tempo: 'Темп', purpose: 'Назначение'
+  };
+  const colors = { mood:'mood', national_color:'national', instruments:'instruments', style:'style', tempo:'tempo', purpose:'purpose' };
+  let html = '';
+  Object.keys(labels).forEach(cat => {
+    html += `<div class="filter-group">
+      <label>${labels[cat]}</label>
+      <div class="filter-chips">`;
+    (opts[cat] || []).forEach(opt => {
+      html += `<span class="chip" data-cat="${cat}" data-val="${opt}" onclick="toggleFilter('${cat}','${opt}',this)">${opt}</span>`;
+    });
+    html += `</div></div>`;
+  });
+  document.getElementById('filter-groups').innerHTML = html;
+}
+
+function toggleFilter(cat, val, el) {
+  const idx = activeFilters[cat].indexOf(val);
+  if (idx === -1) { activeFilters[cat].push(val); el.classList.add('active'); }
+  else { activeFilters[cat].splice(idx, 1); el.classList.remove('active'); }
+  applyFilters();
+}
+
+function clearFilters() {
+  Object.keys(activeFilters).forEach(k => activeFilters[k] = []);
+  document.querySelectorAll('.chip.active').forEach(el => el.classList.remove('active'));
+  applyFilters();
+}
+
+function applyFilters() {
+  const hasFilter = Object.values(activeFilters).some(arr => arr.length > 0);
+  const results = [];
+
+  catalog.artists.forEach(artist => {
+    artist.albums.forEach(album => {
+      const matched = album.tracks.filter(track => {
+        if (!hasFilter) return true;
+        const tags = track.tags || {};
+        return Object.entries(activeFilters).every(([cat, vals]) => {
+          if (!vals.length) return true;
+          if (cat === 'tempo') return vals.includes(tags.tempo);
+          return vals.some(v => (tags[cat] || []).includes(v));
+        });
+      });
+      if (matched.length) results.push({ artist, album, tracks: matched });
+    });
+  });
+
+  document.getElementById('filter-count').textContent = results.reduce((s, g) => s + g.tracks.length, 0);
+
+  let html = '';
+  results.forEach(group => {
+    html += `<div class="filtered-album-group">
+      <div class="filtered-album-label">
+        <span style="color:var(--text3)">${group.artist.name}</span>
+        &nbsp;/&nbsp;
+        <strong>${group.album.title}</strong>
+      </div>
+      <table class="track-table">
+        <tbody>`;
+    group.tracks.forEach(track => {
+      const tags = track.tags || {};
+      const tagPrev = [
+        ...(tags.mood||[]).map(t=>`<span class="tag-mini mood">${t}</span>`),
+        ...(tags.purpose||[]).map(t=>`<span class="tag-mini purpose">${t}</span>`),
+        ...(tags.national_color||[]).map(t=>`<span class="tag-mini national">${t}</span>`)
+      ].join('');
+      const hasLink = track.spotify_url ? 'has-link' : '';
+      html += `<tr class="track-row" data-artist="${encodeURIComponent(group.artist.id)}" data-album="${encodeURIComponent(group.album.id)}" data-track="${encodeURIComponent(group.album.id+'-'+track.id)}" onclick="handleAlbumClick(this)">
+        <td class="track-num">${track.id}</td>
+        <td class="track-title">${track.title}</td>
+        <td><div class="track-tags-preview">${tagPrev}</div></td>
+        <td class="track-duration">${track.duration||'—'}</td>
+        <td style="text-align:center">
+          ${track.spotify_url ? `<span class="copy-link-btn" style="display:inline-flex;font-size:11px;padding:3px 8px" onclick="event.stopPropagation();navigator.clipboard.writeText('${track.spotify_url}');this.textContent='✓'">📋</span>` : ''}
+          <span class="track-link-indicator ${hasLink}">🔗</span>
+        </td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+  });
+
+  if (!results.length && hasFilter) html = `<div style="padding:32px;color:var(--text3);text-align:center;font-size:14px">Нет треков с выбранными тегами</div>`;
+  document.getElementById('filter-results-list').innerHTML = html;
+}
+
+// ========== VIEWS ==========
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  if (name !== 'welcome') previousView = name;
+}
+
+function goBack() { showView('welcome'); currentAlbumId = null; currentArtistId = null; renderSidebar(); }
+
+// ========== GITHUB ==========
+function showGithubModal() {
+  document.getElementById('gh-token').value = ghSettings.token || '';
+  document.getElementById('gh-repo').value = ghSettings.repo || '';
+  document.getElementById('gh-path').value = ghSettings.path || 'catalog.json';
+  document.getElementById('modal-github').classList.add('open');
+}
+
+function saveGithubSettings() {
+  ghSettings.token = document.getElementById('gh-token').value.trim();
+  ghSettings.repo = document.getElementById('gh-repo').value.trim();
+  ghSettings.path = document.getElementById('gh-path').value.trim() || 'catalog.json';
+  localStorage.setItem('gh_settings', JSON.stringify(ghSettings));
+  closeModal('modal-github');
+  if (ghSettings.token && ghSettings.repo) { updateGhStatus(true); saveData(); }
+}
+
+async function testGithub() {
+  const token = document.getElementById('gh-token').value.trim();
+  const repo = document.getElementById('gh-repo').value.trim();
+  try {
+    const r = await fetch(`https://api.github.com/repos/${repo}`, { headers: { Authorization: `token ${token}` } });
+    if (r.ok) alert('✅ Соединение успешно!');
+    else alert('❌ Ошибка: ' + r.status + ' ' + r.statusText);
+  } catch(e) { alert('❌ Ошибка соединения'); }
+}
+
+async function loadFromGithub() {
+  const { token, repo, path } = ghSettings;
+
+  // First get file metadata (SHA + check if content is truncated)
+  const r = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+    headers: { Authorization: `token ${token}` }
+  });
+  if (!r.ok) throw new Error('GH load failed: ' + r.status);
+  const data = await r.json();
+
+  console.log('GH file size:', data.size, 'content length:', data.content?.length);
+
+  let jsonText;
+  if (data.content && data.content.trim() !== '') {
+    // Small file: content is base64-encoded inline
+    jsonText = atob(data.content.replace(/\n/g, ''));
+    console.log('GH loaded via base64, json length:', jsonText.length);
+  } else if (data.download_url) {
+    // Large file (>1MB): use download_url (no auth header — avoids CORS preflight)
+    const rawR = await fetch(data.download_url);
+    if (!rawR.ok) throw new Error('GH raw load failed: ' + rawR.status);
+    jsonText = await rawR.text();
+    console.log('GH loaded via download_url, json length:', jsonText.length);
+  } else {
+    throw new Error('GH load failed: no content and no download_url');
+  }
+
+  catalog = JSON.parse(jsonText);
+  console.log('GH catalog loaded, artists:', catalog.artists?.length);
+  updateGhStatus(true);
+}
+
+async function saveToGithub(commitMessage = null) {
+  const { token, repo, path } = ghSettings;
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(catalog, null, 2))));
+
+  // Get current SHA
+  let sha = '';
+  try {
+    const r = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+      headers: { Authorization: `token ${token}` }
+    });
+    if (r.ok) { const d = await r.json(); sha = d.sha; }
+  } catch(e) {}
+
+  const message = commitMessage || `Update catalog · ${new Date().toLocaleString('ru-RU')}`;
+  const body = { message, content, ...(sha ? { sha } : {}) };
+  const r = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) throw new Error('GH save failed: ' + r.status);
+  updateGhStatus(true);
+}
+
+function updateGhStatus(ok) {
+  document.getElementById('gh-status-dot').className = 'gh-status ' + (ok ? 'ok' : 'err');
+  document.getElementById('gh-status-text').textContent = ok
+    ? `GitHub: ${ghSettings.repo} · ${ghSettings.path}`
+    : 'GitHub не подключён — данные хранятся в браузере';
+  document.getElementById('gh-mode-label').textContent = ok ? `· ${ghSettings.repo}` : '· локальный режим';
+}
+
+async function saveData(commitMessage = null) {
+  const statusEl = document.getElementById('gh-status-dot');
+  statusEl.style.background = '#ffa500'; // orange - saving
+  
+  // Try to save to localStorage, but skip if too large (>1MB)
+  try {
+    const jsonStr = JSON.stringify(catalog);
+    if (jsonStr.length < 1000000) { // ~1MB
+      localStorage.setItem('music_catalog', jsonStr);
+    }
+  } catch(e) {
+    console.log('localStorage full, skipping local save:', e.message);
+  }
+  
+  if (ghSettings.token && ghSettings.repo) {
+    try { 
+      await saveToGithub(commitMessage);
+      statusEl.className = 'gh-status ok'; // green - saved
+      setTimeout(() => {
+        if (ghSettings.token && ghSettings.repo) {
+          statusEl.className = 'gh-status ok';
+        }
+      }, 2000);
+    }
+    catch(e) { 
+      console.error('GH save failed', e);
+      statusEl.className = 'gh-status err'; // red - error
+    }
+  } else {
+    statusEl.className = 'gh-status'; // gray - local only
+  }
+}
+
+// ========== EXPORT ==========
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(catalog, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'catalog.json'; a.click();
+}
+
+function exportCSV() {
+  let csv = 'Исполнитель,Альбом,Дата,#,Трек,Длительность,Spotify,Настроение,Назначение,Нац.колорит,Стиль,Инструменты,Темп\n';
+  catalog.artists.forEach(artist => {
+    artist.albums.forEach(album => {
+      album.tracks.forEach(track => {
+        const t = track.tags || {};
+        const row = [
+          artist.name, album.title, album.release_date || '',
+          track.id, track.title, track.duration || '',
+          track.spotify_url || '',
+          (t.mood||[]).join('; '), (t.purpose||[]).join('; '),
+          (t.national_color||[]).join('; '), (t.style||[]).join('; '),
+          (t.instruments||[]).join('; '), t.tempo || ''
+        ].map(v => `"${String(v).replace(/"/g,'""')}"`).join(',');
+        csv += row + '\n';
+      });
+    });
+  });
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'catalog.csv'; a.click();
+}
+
+// ========== HELPERS ==========
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function parseRowId(rowId) {
+  // rowId = albumId-trackId (albumId may contain dashes)
+  // trackId is always numeric at end
+  const parts = rowId.split('-');
+  const trackId = parseInt(parts[parts.length - 1]);
+  const albumId = parts.slice(0, -1).join('-');
+  return [albumId, trackId];
+}
+
+function getTrack(albumId, trackId) {
+  for (const artist of catalog.artists) {
+    const album = artist.albums.find(al => al.id === albumId);
+    if (album) {
+      const track = album.tracks.find(t => t.id === trackId);
+      if (track) return track;
+    }
+  }
+  return null;
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+});
+
+// ========== START ==========
+// Intercept browser back button so it doesn't navigate away from the app
+history.pushState(null, '', location.href);
+window.addEventListener('popstate', function() {
+  history.pushState(null, '', location.href);
+  goBack();
+});
+
+init();
+</script>
+</body>
+</html>
