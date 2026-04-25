@@ -510,6 +510,18 @@ body {
   pointer-events: none;
 }
 .search-input[contenteditable]:focus { outline: none; }
+.search-toggle {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text3);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.search-toggle:hover { border-color: var(--accent); color: var(--text2); }
 </style>
 </head>
 <body>
@@ -537,7 +549,9 @@ body {
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="search-wrap">
-      <div id="search-input-container"></div>
+      <div id="search-input-container">
+        <div id="search-toggle" class="search-toggle" onclick="showSearchInput()">🔍 Поиск треков</div>
+      </div>
     </div>
     <div id="sidebar-content"></div>
   </aside>
@@ -728,13 +742,7 @@ async function init() {
   }
 
   // Create search input dynamically so browser can't autofill it
-  const container = document.getElementById('search-input-container');
-  const inp = document.createElement('input');
-  inp.className = 'search-input';
-  inp.placeholder = 'Поиск треков...';
-  inp.setAttribute('autocomplete', 'off');
-  inp.addEventListener('input', () => searchTracks(inp.value));
-  container.appendChild(inp);
+  // Search input created on demand to prevent browser autofill
 
   renderSidebar();
   renderFilterGroups();
@@ -771,6 +779,19 @@ function handleAlbumClick(el) {
   const trackId = target.dataset.track ? decodeURIComponent(target.dataset.track) : null;
   openAlbum(artistId, albumId);
   if (trackId) setTimeout(() => expandTrack(trackId), 200);
+}
+
+function showSearchInput() {
+  const container = document.getElementById('search-input-container');
+  container.innerHTML = '';
+  const inp = document.createElement('input');
+  inp.className = 'search-input';
+  inp.placeholder = 'Поиск треков...';
+  inp.setAttribute('autocomplete', 'off');
+  inp.setAttribute('type', 'search');
+  inp.addEventListener('input', () => searchTracks(inp.value));
+  container.appendChild(inp);
+  inp.focus();
 }
 
 function renderSidebar() {
