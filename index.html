@@ -530,7 +530,7 @@ body {
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="search-wrap">
-      <input class="search-input" placeholder="Поиск треков..." oninput="searchTracks(this.value)" autocomplete="off" />
+      <input class="search-input" placeholder="Поиск треков..." oninput="searchTracks(this.value)" autocomplete="off" name="search_x7k" id="search-input-field" />
     </div>
     <div id="sidebar-content"></div>
   </aside>
@@ -723,10 +723,13 @@ async function init() {
   renderSidebar();
   renderFilterGroups();
   // Clear search field after browser restores form values
-  setTimeout(() => {
-    const s = document.querySelector('.search-input');
-    if (s.value) { s.value = ''; renderSidebar(); }
-  }, 100);
+  // Yandex browser restores form values late, use multiple attempts
+  [100, 300, 500, 1000].forEach(ms => {
+    setTimeout(() => {
+      const s = document.querySelector('.search-input');
+      if (s.value) { s.value = ''; renderSidebar(); }
+    }, ms);
+  });
 }
 
 function getDefaultTags() {
