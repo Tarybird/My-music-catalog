@@ -681,7 +681,13 @@ async function init() {
     try {
       const r = await fetch('./catalog.json');
       if (r.ok) { catalog = await r.json(); loaded = true; }
-    } catch(e) {}
+    } catch(e) { console.log('Local fetch failed', e); }
+  }
+  if (!loaded) {
+    try {
+      const r = await fetch('/catalog.json');
+      if (r.ok) { catalog = await r.json(); loaded = true; }
+    } catch(e) { console.log('Root fetch failed', e); }
   }
   if (!loaded) {
     catalog = { artists: [], tag_options: getDefaultTags() };
