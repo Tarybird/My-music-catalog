@@ -720,10 +720,13 @@ async function init() {
     catalog = { artists: [], tag_options: getDefaultTags() };
   }
 
-  // Always clear search field on load
-  document.querySelector('.search-input').value = '';
   renderSidebar();
   renderFilterGroups();
+  // Clear search field after browser restores form values
+  setTimeout(() => {
+    const s = document.querySelector('.search-input');
+    if (s.value) { s.value = ''; renderSidebar(); }
+  }, 100);
 }
 
 function getDefaultTags() {
