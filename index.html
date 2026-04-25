@@ -791,7 +791,9 @@ function openAlbum(artistId, albumId) {
   currentArtistId = artistId;
   currentAlbumId = albumId;
   const artist = catalog.artists.find(a => a.id === artistId);
+  if (!artist) { console.error('Artist not found:', artistId, 'catalog:', catalog); return; }
   const album = artist.albums.find(al => al.id === albumId);
+  if (!album) { console.error('Album not found:', albumId); return; }
   expandedTrackId = null;
 
   document.getElementById('album-title-display').textContent = album.title;
@@ -1296,28 +1298,37 @@ async function testGithub() {
 
 async function loadFromGithub() {
   const { token, repo, path } = ghSettings;
+
+  // First get file metadata (SHA + check if content is truncated)
   const r = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
     headers: { Authorization: `token ${token}` }
   });
-  if (!r.ok) throw new Error('GH load failed');
+  if (!r.ok) throw new Error('GH load failed: ' + r.status);
   const data = await r.json();
 
+  console.log('GH file size:', data.size, 'content length:', data.content?.length);
+
   let jsonText;
-  if (data.content) {
+  if (data.content && data.content.trim() !== '') {
     // Small file: content is base64-encoded inline
     jsonText = atob(data.content.replace(/\n/g, ''));
-  } else if (data.download_url) {
-    // Large file: content is empty, fetch via download_url
-    const dr = await fetch(data.download_url, {
-      headers: { Authorization: `token ${token}` }
-    });
-    if (!dr.ok) throw new Error('GH download failed');
-    jsonText = await dr.text();
+    console.log('GH loaded via base64, json length:', jsonText.length);
   } else {
-    throw new Error('GH load failed: no content');
+    // Large file (>1MB): fetch raw content directly
+    // Try main branch first, then master
+    let rawR;
+    for (const branch of ['main', 'master']) {
+      const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${path}`;
+      rawR = await fetch(rawUrl, { headers: { Authorization: `token ${token}` } });
+      if (rawR.ok) { console.log('GH loaded via raw, branch:', branch); break; }
+    }
+    if (!rawR || !rawR.ok) throw new Error('GH raw load failed');
+    jsonText = await rawR.text();
+    console.log('GH raw json length:', jsonText.length);
   }
 
   catalog = JSON.parse(jsonText);
+  console.log('GH catalog loaded, artists:', catalog.artists?.length);
   updateGhStatus(true);
 }
 
