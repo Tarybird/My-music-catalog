@@ -503,6 +503,13 @@ body {
 .field-input.valid::after { content: "✓"; color: #4ade80; }
 .spotify-status { display: inline-block; margin-left: 8px; font-size: 18px; min-width: 24px; }
 .spotify-status.saved { color: #4ade80; }
+
+.search-input[contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: var(--text3);
+  pointer-events: none;
+}
+.search-input[contenteditable]:focus { outline: none; }
 </style>
 </head>
 <body>
@@ -530,7 +537,7 @@ body {
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="search-wrap">
-      <input class="search-input" placeholder="Поиск треков..." oninput="searchTracks(this.value)" autocomplete="off" name="search_x7k" id="search-input-field" />
+      <div class="search-input" contenteditable="true" id="search-input-field" data-placeholder="Поиск треков..." oninput="searchTracks(this.innerText)" onkeydown="if(event.key==='Enter')event.preventDefault()"></div>
     </div>
     <div id="sidebar-content"></div>
   </aside>
@@ -726,8 +733,8 @@ async function init() {
   // Yandex browser restores form values late, use multiple attempts
   [100, 300, 500, 1000].forEach(ms => {
     setTimeout(() => {
-      const s = document.querySelector('.search-input');
-      if (s.value) { s.value = ''; renderSidebar(); }
+      const s = document.getElementById('search-input-field');
+      if (s.innerText.trim()) { s.innerText = ''; renderSidebar(); }
     }, ms);
   });
 }
