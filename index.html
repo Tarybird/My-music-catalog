@@ -1313,18 +1313,14 @@ async function loadFromGithub() {
     // Small file: content is base64-encoded inline
     jsonText = atob(data.content.replace(/\n/g, ''));
     console.log('GH loaded via base64, json length:', jsonText.length);
-  } else {
-    // Large file (>1MB): fetch raw content directly
-    // Try main branch first, then master
-    let rawR;
-    for (const branch of ['main', 'master']) {
-      const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${path}`;
-      rawR = await fetch(rawUrl, { headers: { Authorization: `token ${token}` } });
-      if (rawR.ok) { console.log('GH loaded via raw, branch:', branch); break; }
-    }
-    if (!rawR || !rawR.ok) throw new Error('GH raw load failed');
+  } else if (data.download_url) {
+    // Large file (>1MB): use download_url (no auth header — avoids CORS preflight)
+    const rawR = await fetch(data.download_url);
+    if (!rawR.ok) throw new Error('GH raw load failed: ' + rawR.status);
     jsonText = await rawR.text();
-    console.log('GH raw json length:', jsonText.length);
+    console.log('GH loaded via download_url, json length:', jsonText.length);
+  } else {
+    throw new Error('GH load failed: no content and no download_url');
   }
 
   catalog = JSON.parse(jsonText);
