@@ -737,9 +737,15 @@ function getDefaultTags() {
 
 // ========== SIDEBAR ==========
 function handleAlbumClick(el) {
-  const artistId = decodeURIComponent(el.dataset.artist || el.closest('[data-artist]').dataset.artist);
-  const albumId = decodeURIComponent(el.dataset.album || el.closest('[data-album]').dataset.album);
-  const trackId = el.dataset.track ? decodeURIComponent(el.dataset.track) : null;
+  // Walk up DOM to find element with data-artist (in case click hit a child element)
+  let target = el;
+  while (target && !target.dataset.artist) {
+    target = target.parentElement;
+  }
+  if (!target) { console.error('handleAlbumClick: no data-artist found'); return; }
+  const artistId = decodeURIComponent(target.dataset.artist);
+  const albumId = decodeURIComponent(target.dataset.album);
+  const trackId = target.dataset.track ? decodeURIComponent(target.dataset.track) : null;
   openAlbum(artistId, albumId);
   if (trackId) setTimeout(() => expandTrack(trackId), 200);
 }
