@@ -991,17 +991,27 @@ function saveTrack(rowId) {
   const artist = catalog.artists.find(a => a.albums.find(al => al.id === albumId));
   const album = artist.albums.find(al => al.id === albumId);
   renderTrackList(album);
-  // Re-expand
-  setTimeout(() => {
-    const content = document.getElementById('expandcontent-' + rowId);
-    const row = document.getElementById('row-' + rowId);
-    if (content) { content.classList.add('open'); row.classList.add('expanded'); }
-  }, 10);
 
   saveData(`Update track: "${track.title}" in "${album.title}"`);
 
+  // Show save status
   const toast = document.getElementById('toast-' + rowId);
-  if (toast) { toast.textContent = '✓ Сохранено'; toast.classList.add('show'); setTimeout(() => { toast.classList.remove('show'); toast.textContent = 'Скопировано!'; }, 1500); }
+  if (toast) { 
+    toast.textContent = '✓ Сохранено'; 
+    toast.classList.add('show'); 
+    setTimeout(() => { toast.classList.remove('show'); }, 1500); 
+  }
+
+  // Close expanded track after short delay
+  setTimeout(() => {
+    const content = document.getElementById('expandcontent-' + rowId);
+    const row = document.getElementById('row-' + rowId);
+    if (content) { 
+      content.classList.remove('open'); 
+      row.classList.remove('expanded');
+      expandedTrackId = null;
+    }
+  }, 800);
 }
 
 function copySpotifyLink(rowId) {
@@ -1328,10 +1338,26 @@ function updateGhStatus(ok) {
 }
 
 async function saveData(commitMessage = null) {
+  const statusEl = document.getElementById('gh-status-dot');
+  statusEl.style.background = '#ffa500'; // orange - saving
+  
   localStorage.setItem('music_catalog', JSON.stringify(catalog));
   if (ghSettings.token && ghSettings.repo) {
-    try { await saveToGithub(commitMessage); }
-    catch(e) { console.error('GH save failed', e); }
+    try { 
+      await saveToGithub(commitMessage);
+      statusEl.className = 'gh-status ok'; // green - saved
+      setTimeout(() => {
+        if (ghSettings.token && ghSettings.repo) {
+          statusEl.className = 'gh-status ok';
+        }
+      }, 2000);
+    }
+    catch(e) { 
+      console.error('GH save failed', e);
+      statusEl.className = 'gh-status err'; // red - error
+    }
+  } else {
+    statusEl.className = 'gh-status'; // gray - local only
   }
 }
 
