@@ -87,13 +87,34 @@ body {
   margin-top: 12px;
 }
 .sidebar-album {
-  padding: 9px 20px 9px 28px;
+  padding: 8px 20px;
   cursor: pointer;
   font-size: 13px;
   color: var(--text2);
   transition: all 0.15s;
   border-left: 2px solid transparent;
   line-height: 1.4;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.album-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.album-info { flex: 1; min-width: 0; }
+.album-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sidebar-album:hover { color: var(--text); background: var(--surface2); }
 .sidebar-album.active { color: var(--accent); border-left-color: var(--accent); background: var(--surface2); }
@@ -718,9 +739,13 @@ function renderSidebar() {
     artist.albums.forEach(album => {
       const active = (currentAlbumId === album.id) ? 'active' : '';
       const date = album.release_date ? album.release_date.slice(0,7) : '—';
+      const coverStyle = album.cover_url ? `background-image: url('${album.cover_url}'); background-size: cover; background-position: center;` : '';
       html += `<div class="sidebar-album ${active}" onclick="openAlbum('${artist.id}','${album.id}')">
-        ${album.title}
-        <div class="album-date">${date}</div>
+        <div class="album-thumb" style="${coverStyle}"></div>
+        <div class="album-info">
+          <div class="album-title">${album.title}</div>
+          <div class="album-date">${date}</div>
+        </div>
       </div>`;
     });
     html += `</div>`;
