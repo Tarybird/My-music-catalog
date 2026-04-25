@@ -730,6 +730,14 @@ function getDefaultTags() {
 }
 
 // ========== SIDEBAR ==========
+function handleAlbumClick(el) {
+  const artistId = decodeURIComponent(el.dataset.artist || el.closest('[data-artist]').dataset.artist);
+  const albumId = decodeURIComponent(el.dataset.album || el.closest('[data-album]').dataset.album);
+  const trackId = el.dataset.track ? decodeURIComponent(el.dataset.track) : null;
+  openAlbum(artistId, albumId);
+  if (trackId) setTimeout(() => expandTrack(trackId), 200);
+}
+
 function renderSidebar() {
   const el = document.getElementById('sidebar-content');
   let html = '';
@@ -740,7 +748,7 @@ function renderSidebar() {
       const active = (currentAlbumId === album.id) ? 'active' : '';
       const date = album.release_date ? album.release_date.slice(0,7) : '—';
       const coverStyle = album.cover_url ? `background-image: url('${album.cover_url}'); background-size: cover; background-position: center;` : '';
-      html += `<div class="sidebar-album ${active}" onclick="openAlbum('${artist.id}','${album.id}')">
+      html += `<div class="sidebar-album ${active}" data-artist="${encodeURIComponent(artist.id)}" data-album="${encodeURIComponent(album.id)}" onclick="handleAlbumClick(this)">
         <div class="album-thumb" style="${coverStyle}"></div>
         <div class="album-info">
           <div class="album-title">${album.title}</div>
@@ -766,7 +774,7 @@ function searchTracks(q) {
       if (matches.length) {
         html += `<div class="filtered-album-label"><strong>${album.title}</strong></div>`;
         matches.forEach(t => {
-          html += `<div class="sidebar-album" onclick="openAlbum('${artist.id}','${album.id}');setTimeout(()=>expandTrack('${album.id}-${t.id}'),200)">${t.title}</div>`;
+          html += `<div class="sidebar-album" data-artist="${encodeURIComponent(artist.id)}" data-album="${encodeURIComponent(album.id)}" data-track="${encodeURIComponent(album.id+'-'+t.id)}" onclick="handleAlbumClick(this)">${t.title}</div>`;
           count++;
         });
       }
@@ -1242,7 +1250,7 @@ function applyFilters() {
         ...(tags.national_color||[]).map(t=>`<span class="tag-mini national">${t}</span>`)
       ].join('');
       const hasLink = track.spotify_url ? 'has-link' : '';
-      html += `<tr class="track-row" onclick="openAlbum('${group.artist.id}','${group.album.id}');setTimeout(()=>expandTrack('${group.album.id}-${track.id}'),200)">
+      html += `<tr class="track-row" data-artist="${encodeURIComponent(group.artist.id)}" data-album="${encodeURIComponent(group.album.id)}" data-track="${encodeURIComponent(group.album.id+'-'+track.id)}" onclick="handleAlbumClick(this)">
         <td class="track-num">${track.id}</td>
         <td class="track-title">${track.title}</td>
         <td><div class="track-tags-preview">${tagPrev}</div></td>
@@ -1443,6 +1451,13 @@ document.querySelectorAll('.modal-overlay').forEach(el => {
 });
 
 // ========== START ==========
+// Intercept browser back button so it doesn't navigate away from the app
+history.pushState(null, '', location.href);
+window.addEventListener('popstate', function() {
+  history.pushState(null, '', location.href);
+  goBack();
+});
+
 init();
 </script>
 </body>
