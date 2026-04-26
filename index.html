@@ -692,6 +692,7 @@ body {
     </div>
     <p style="font-size:12px;color:var(--text3);margin:10px 0">или</p>
     <button class="btn btn-ghost" onclick="document.getElementById('cover-file-input').click()">📂 Загрузить файл</button>
+    <p id="cover-upload-hint" style="font-size:11px;color:var(--text3);margin-top:8px;line-height:1.5"></p>
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('modal-cover')">Отмена</button>
       <button class="btn btn-primary" onclick="applyCoverUrl()">Применить</button>
@@ -1126,7 +1127,17 @@ function openSpotifyAlbum() {
   else alert('Ссылка на альбом не заполнена');
 }
 
-function changeCover() { document.getElementById('modal-cover').classList.add('open'); }
+function changeCover() {
+  const hint = document.getElementById('cover-upload-hint');
+  if (ghSettings.token && ghSettings.repo) {
+    hint.textContent = '☁️ Файл загрузится в папку covers/ на GitHub — ссылка сохранится постоянной';
+    hint.style.color = 'var(--accent)';
+  } else {
+    hint.textContent = '⚠️ GitHub не подключён — файл сохранится как base64 внутри catalog.json (тяжело)';
+    hint.style.color = 'var(--text3)';
+  }
+  document.getElementById('modal-cover').classList.add('open');
+}
 
 function applyCoverUrl() {
   const url = document.getElementById('cover-url-input').value.trim();
@@ -1135,12 +1146,75 @@ function applyCoverUrl() {
   closeModal('modal-cover');
 }
 
-function handleCoverFile(e) {
+async function handleCoverFile(e) {
   const file = e.target.files[0];
   if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => { setCoverUrl(ev.target.result); closeModal('modal-cover'); };
-  reader.readAsDataURL(file);
+
+  if (ghSettings.token && ghSettings.repo) {
+    // Upload to GitHub covers/ folder
+    const hint = document.getElementById('cover-upload-hint');
+    hint.textContent = '⏳ Загружаю на GitHub...';
+    hint.style.color = 'var(--accent)';
+    try {
+      const url = await uploadCoverToGithub(file);
+      setCoverUrl(url);
+      closeModal('modal-cover');
+    } catch(err) {
+      hint.textContent = '❌ Ошибка загрузки: ' + err.message;
+      hint.style.color = '#c87e9a';
+    }
+  } else {
+    // Fallback: base64
+    const reader = new FileReader();
+    reader.onload = ev => { setCoverUrl(ev.target.result); closeModal('modal-cover'); };
+    reader.readAsDataURL(file);
+  }
+  // Reset input so same file can be selected again
+  e.target.value = '';
+}
+
+async function uploadCoverToGithub(file) {
+  const { token, repo } = ghSettings;
+  const ext = file.name.split('.').pop().toLowerCase();
+  // Sanitise filename: use album id + timestamp
+  const artist = catalog.artists.find(a => a.id === currentArtistId);
+  const album = artist.albums.find(al => al.id === currentAlbumId);
+  const safeName = (album.id || 'cover') + '-' + Date.now() + '.' + ext;
+  const ghPath = `covers/${safeName}`;
+
+  // Read file as base64
+  const base64 = await new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.onload = ev => res(ev.target.result.split(',')[1]);
+    reader.onerror = rej;
+    reader.readAsDataURL(file);
+  });
+
+  // Check if file already exists (need SHA for update)
+  let sha = '';
+  try {
+    const r = await fetch(`https://api.github.com/repos/${repo}/contents/${ghPath}`, {
+      headers: { Authorization: `token ${token}` }
+    });
+    if (r.ok) { const d = await r.json(); sha = d.sha; }
+  } catch(e) {}
+
+  const body = {
+    message: `Add cover: "${album.title}"`,
+    content: base64,
+    ...(sha ? { sha } : {})
+  };
+  const r = await fetch(`https://api.github.com/repos/${repo}/contents/${ghPath}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const errText = await r.text();
+    throw new Error(r.status + ' ' + errText);
+  }
+  // Return raw URL — always accessible publicly
+  return `https://raw.githubusercontent.com/${repo}/main/${ghPath}`;
 }
 
 function setCoverUrl(url) {
