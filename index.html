@@ -1392,7 +1392,8 @@ async function loadFromGithub() {
     // Large file (>1MB): use download_url (no auth header — avoids CORS preflight)
     const rawR = await fetch(data.download_url);
     if (!rawR.ok) throw new Error('GH raw load failed: ' + rawR.status);
-    jsonText = await rawR.text();
+    const buffer = await rawR.arrayBuffer();
+    jsonText = new TextDecoder('utf-8').decode(buffer);
     console.log('GH loaded via download_url, json length:', jsonText.length);
   } else {
     throw new Error('GH load failed: no content and no download_url');
